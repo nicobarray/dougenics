@@ -1,0 +1,32 @@
+
+- Map [barray_n]
+    - Tile Engine
+    - Scrolling  \
+    - Background / parallax scrolling
+    - night/day cycle
+    - biomes
+
+- Rondoudou [tournu_c]
+    - spawn a rondoudou
+    - selecting rondoudous
+    - moving rondoudous
+    - plant "rondou seeds"
+    - grow a "rondou tree"
+    - birth rondoudou from tree
+    - grow baby rondoudou
+
+- Menu [barray_n]
+    - Main                               [50%]
+    - Pause
+    - Help
+
+- Yet another feature
+    - Pokemon masters (enemies)
+    - rondoudou attacks and escapes
+    - "evolution"
+    - stats
+    - HUD
+    - game victory
+    - sound fx
+    - sound music
+

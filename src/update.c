@@ -65,8 +65,6 @@ void update(enum e_game_state *game_state, int *end)
     static SDL_Event event;
     SDL_PollEvent(&event);
 
-    printf("Game State : %d\n", *game_state);
-
     switch (*game_state)
     {
         case SPLASH:

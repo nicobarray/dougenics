@@ -5,15 +5,17 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+
 # include <SDL/SDL.h>
+# include <SDL/SDL_image.h>
 
 // defines
 # define WIDTH  800
 # define FORMAT 16 / 9
-# define HEIGHT WIDTH * FORMAT
+# define HEIGHT 600
 # define FPS    60
 
-# define SURFACE_COUNT 1
+# define SURFACE_COUNT 2
 
 // types declaration
 

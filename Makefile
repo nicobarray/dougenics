@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -pedantic -std=c99
+CFLAGS = -Wall -Wextra -Werror -pedantic -std=c99 -g3
 CPPFLAGS = -I ./src/include/
-LDFLAGS = -lSDL
+LDFLAGS = -lSDL -lSDL_image
 
 SRC = src/game.c src/draw.c src/update.c
 OBJ = $(SRC:.c=.o)
@@ -13,4 +13,4 @@ $(TARGET) : $(OBJ)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 clean :
-	$(RM) $(OUT) $(OBJ)
+	$(RM) $(TARGET) $(OBJ)
