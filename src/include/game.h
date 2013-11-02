@@ -9,6 +9,8 @@
 # include <SDL/SDL.h>
 # include <SDL/SDL_image.h>
 
+# include "structures.h"
+
 // defines
 # define WIDTH  800
 # define FORMAT 16 / 9
