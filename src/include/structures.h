@@ -8,7 +8,9 @@ typedef struct rondoudou
 
 typedef struct list
 {
+	int id;
 	struct list *next;
 	void *body;
 } s_list;
+
 #endif /* !STRUCTURES_H_ */

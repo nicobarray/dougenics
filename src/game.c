@@ -1,14 +1,12 @@
 #include <game.h>
 
-int initialize(SDL_Surface ***surface)
+static SDL_Surface *screen = NULL;
+static s_list	   *surfaces = NULL;
+
+int initialize(s_list **surfaces)
 {
     int flags = IMG_INIT_PNG;
 
-    for (int i = 0; i < SURFACE_COUNT; ++i)
-    {
-        surface[i] = malloc(sizeof (SDL_Surface));
-    }
- 
     if (SDL_Init(SDL_INIT_VIDEO) == -1)
     {
         printf("SDL_Init : %s\n", SDL_GetError());
@@ -21,10 +19,9 @@ int initialize(SDL_Surface ***surface)
         return 0;
     }
 
-    *surface[0] = SDL_SetVideoMode(WIDTH, HEIGHT, 32, SDL_HWSURFACE);
-    *surface[1] = SDL_CreateRGBSurface(0, WIDTH, HEIGHT, 32, 0, 0, 0, 0);
+    screen = SDL_SetVideoMode(WIDTH, HEIGHT, 32, SDL_HWSURFACE);
     
-    if (!*surface[0])
+    if (!screen)
     {
         printf("SDL_SetVideoMode : %s\n", SDL_GetError());
         return 0; 
@@ -33,29 +30,16 @@ int initialize(SDL_Surface ***surface)
     return 1;
 }
 
-static SDL_Surface *load_img(char *asset)
+int load_content(s_list **surfaces)
 {
-    SDL_Surface *img = NULL;
-    
-    if (!(img = IMG_Load(asset)))
-    {
-        printf("load_content : %s\n", IMG_GetError());
-        exit(quit(1));
-    }
-    return img;
-}
-
-int load_content(SDL_Surface ***surface)
-{
-    SDL_Surface *img = load_img("assets/img/background.png");
-    *surface[1] = img;
+	surface = surface;
     return 1;
 }
 
-int unload_content(SDL_Surface ***surface)
+int unload_content(s_list **surfaces)
 {
-    for (int i = 0; i < SURFACE_COUNT; ++i)
-        SDL_FreeSurface(*surface[i]);
+        while
+	SDL_FreeSurface(surfaces[i]);
 
     free(*surface);
     return 1;
@@ -70,40 +54,27 @@ short unsigned int quit(short unsigned int code)
 
 int main(void)
 {
-    SDL_Surface       **surface = NULL;
-    enum e_game_state game_state = SPLASH;
-    int               end = 0;
+	SDL_Surface       *surface = NULL;
+	enum e_game_state game_state = SPLASH;
+	int               end = 0;
 
-    printf("++ array\n");
-    if (!(surface = malloc(sizeof (SDL_Surface) * SURFACE_COUNT)))
-        return quit(1);
-    printf("-- array\n");
-    printf("++ init\n");
-    if (!initialize(&surface))
-        return quit(1);
+	if (!(surface = malloc(sizeof (SDL_Surface) * SURFACE_COUNT)))
+		return quit(1);
 
-    printf("-- init\n");
-    printf("++ load\n");
-    if (!load_content(&surface))
-        return quit(2);
+	if (!initialize(&surface))
+		return quit(1);
 
-    printf("-- load\n");
-    printf("++ loop\n");
-    while (!end)
-    {
-        printf("++ update\n");
-        update(&game_state, &end);
-        printf("-- update\n");
-        printf("++ draw\n");
-        draw(game_state, &surface);
-        printf("-- draw\n");
-    }
-    printf("-- loop\n");
-    printf("++ unload\n");
+	if (!load_content(&surface))
+		return quit(2);
 
-    if (!unload_content(&surface))
-        return quit(3);
-    printf("-- unload\n");
-    return 0;
+	while (!end)
+	{
+		update(&game_state, &end);
+		draw(game_state, &surface);
+	}
+
+	if (!unload_content(&surface))
+		return quit(3);
+	return 0;
 }
 

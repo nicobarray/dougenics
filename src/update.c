@@ -60,6 +60,7 @@ void update_pause(SDL_Event event, enum e_game_state *game_state)
         }
     }
 }
+
 void update(enum e_game_state *game_state, int *end)
 {
     static SDL_Event event;
