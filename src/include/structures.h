@@ -4,6 +4,7 @@
 # define SCREEN 0
 # define BKG    1
 # define RDD    2
+# define GRD    3
 
 enum type
 {

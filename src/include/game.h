@@ -14,11 +14,10 @@
 
 // defines
 # define WIDTH  800
-# define FORMAT 16 / 9
 # define HEIGHT 600
 # define FPS    60
 
-# define SURFACE_COUNT 3 
+# define SURFACE_COUNT 4 
 
 // types declaration
 
