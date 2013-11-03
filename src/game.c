@@ -1,7 +1,7 @@
 #include <game.h>
 
-SDL_Surface *screen = NULL;
-SDL_Surface **surfaces = NULL;
+static SDL_Surface **surfaces = NULL;
+static s_list *bodies = NULL;
 
 int initialize(void)
 {
@@ -19,21 +19,23 @@ int initialize(void)
 		return 0;
 	}
 
-	screen = SDL_SetVideoMode(WIDTH, HEIGHT, 32, SDL_HWSURFACE);
+	surfaces[0] = SDL_SetVideoMode(WIDTH, HEIGHT, 32, SDL_HWSURFACE);
 
-	if (!screen)
+	if (!surfaces[0])
 	{
 		printf("SDL_SetVideoMode : %s\n", SDL_GetError());
 		return 0; 
 	}
+
+    // Initialize bodies here 
 
 	return 1;
 }
 
 int load_content(void)
 {
-	surfaces[0] = IMG_Load("assets/img/background.png");
-	surfaces[1] = IMG_Load("assets/img/rondoudou.png");
+	surfaces[1] = IMG_Load("assets/img/background.png");
+	surfaces[2] = IMG_Load("assets/img/rondoudou.png");
 	return 1;
 }
 
@@ -56,12 +58,11 @@ short unsigned int quit(short unsigned int code)
 
 int main(void)
 {
-	SDL_Surface       *surface = NULL;
-	enum e_game_state game_state = SPLASH;
+	enum e_game_state game_state = GAME;
 	int               end = 0;
 	SDL_Event	  event;
 
-	if (!(surface = malloc(sizeof (SDL_Surface) * SURFACE_COUNT)))
+	if (!(surfaces = malloc(sizeof (SDL_Surface*) * SURFACE_COUNT)))
 		return quit(1);
 
 	if (!initialize())
@@ -75,7 +76,7 @@ int main(void)
 		SDL_PollEvent(&event);
 		end = event.type == SDL_QUIT ? 1 : 0;
 		update(&game_state, &end);
-		draw(game_state);
+		draw(surfaces, bodies, game_state);
 	}
 
 	if (!unload_content())

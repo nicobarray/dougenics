@@ -1,19 +1,20 @@
 #ifndef STRUCTURES_H_
 # define STRUCTURES_H_
 
+# define SCREEN 0
+# define BKG    1
+# define RDD    2
+
 enum type
 {
 	RONDOUDOU,
-	BACKGROUND
 };
 
 typedef struct body
 {
-	SDL_Rect *position;
-	enum type *type;
+	SDL_Rect position;
+	enum type type;
 } s_body;
-
-
 
 typedef struct list
 {
