@@ -1,5 +1,4 @@
 #include "body.h"
-#include "list.h"
 
 s_list *new_body(s_list *bodies, enum type type, SDL_Rect position)
 {

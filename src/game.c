@@ -36,8 +36,9 @@ int initialize(void)
 
 int load_content(void)
 {
-	surfaces[1] = IMG_Load("assets/img/background.png");
-	surfaces[2] = IMG_Load("assets/img/rondoudou.png");
+	surfaces[BKG] = IMG_Load("assets/img/background.png");
+	surfaces[RDD] = IMG_Load("assets/img/rondoudou.png");
+    surfaces[GRD] = IMG_Load("assets/img/ground.png");
 	return 1;
 }
 

@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror -pedantic -std=c99 -g3
 CPPFLAGS = -I ./src/include/
 LDFLAGS = -lSDL -lSDL_image
 
-SRC = src/game.c src/draw.c src/update.c src/body.c src/list.c
+SRC = src/game.c src/draw.c src/update.c src/body.c src/list.c src/level.c
 OBJ = $(SRC:.c=.o)
 TARGET = dougenics
 

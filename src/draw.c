@@ -16,9 +16,9 @@ void draw_game(SDL_Surface **surfaces, s_list *bodies)
 {
 	s_list *tmp_bodies = bodies;
 	SDL_Surface *to_draw = NULL;
-    SDL_Rect position = { 0, 0, 0, 0};
+    SDL_Rect position = { 0, HEIGHT - FLOOR_HEIGHT, 0, 0};
 
-	SDL_BlitSurface(surfaces[BKG], NULL, surfaces[SCREEN], &position);
+	SDL_BlitSurface(surfaces[GRD], NULL, surfaces[SCREEN], &position);
 	
 	tmp_bodies = bodies;
 	while (tmp_bodies)
@@ -49,7 +49,7 @@ void draw_pause(SDL_Surface **surfaces)
 
 void draw(SDL_Surface **surfaces, s_list *bodies, enum e_game_state game_state)
 {
-	SDL_FillRect(surfaces[SCREEN], NULL, 0x000000);
+	SDL_FillRect(surfaces[SCREEN], NULL, 0x6666DD);
 	switch (game_state)
 	{
 		case SPLASH:
