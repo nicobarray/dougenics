@@ -1,16 +1,25 @@
 #ifndef STRUCTURES_H_
 # define STRUCTURES_H_
 
-typedef struct rondoudou
+enum type
+{
+	RONDOUDOU,
+	BACKGROUND
+};
+
+typedef struct body
 {
 	SDL_Rect *position;
-} s_rondoudou;
+	enum type *type;
+} s_body;
+
+
 
 typedef struct list
 {
 	int id;
 	struct list *next;
-	void *body;
+	s_body *body;
 } s_list;
 
 #endif /* !STRUCTURES_H_ */
