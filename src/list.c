@@ -1,6 +1,6 @@
 #include "list.h"
 
-s_list *add_list(s_list *list, void *body)
+s_list *add_list(s_list *list, s_body *body)
 {
 	static int ids = 0;
 	s_list *head = NULL;
@@ -10,7 +10,7 @@ s_list *add_list(s_list *list, void *body)
 
 	head->body = body;
 	head->next = list;
-	head->id = ids;		
+	head->id = ids;
 
 	ids++;
 	return head;
@@ -40,7 +40,7 @@ s_list *remove_at_list(int id, s_list *list)
 		}
 		else
 		{
-			return s_remove_at(id, list->next);		
+			return remove_at_list(id, list->next);		
 		}
 	}
 }

@@ -11,6 +11,8 @@
 
 # include <structures.h>
 # include <level.h>
+# include "list.h"
+# include "body.h"
 
 // defines
 # define WIDTH  800
@@ -18,7 +20,7 @@
 # define HEIGHT 600
 # define FPS    60
 
-# define SURFACE_COUNT 3 
+# define SURFACE_COUNT 3
 
 // types declaration
 

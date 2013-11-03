@@ -27,7 +27,9 @@ int initialize(void)
 		return 0; 
 	}
 
-    // Initialize bodies here 
+    // Initialize bodies here
+	SDL_Rect position = { INIT_POS_X, FLOOR_HEIGHT, 0, 0 };
+	bodies = new_body(bodies, RONDOUDOU, position);
 
 	return 1;
 }
