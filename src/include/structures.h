@@ -15,6 +15,7 @@ typedef struct body
 {
 	SDL_Rect position;
 	enum type type;
+	int selected;
 } s_body;
 
 typedef struct list
